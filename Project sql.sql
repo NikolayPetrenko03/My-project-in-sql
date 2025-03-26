@@ -9,7 +9,7 @@ SELECT
 	DATE_FORMAT(order_date, '%Y-%m') AS month_year,
 	SUM(final_price) AS total_revenue
     FROM orders
-    WHERE order_date BETWEEN '2022-06-01' AND '2022-09-30' -- вибираємо 4 місяці
+    WHERE order_date BETWEEN '2022-06-01' AND '2022-09-30'
     GROUP BY time_segment, month_year
 ),
 revenue_with_change AS (
