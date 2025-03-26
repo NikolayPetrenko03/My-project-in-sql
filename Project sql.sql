@@ -13,8 +13,7 @@ SELECT
     GROUP BY time_segment, month_year
 ),
 revenue_with_change AS (
-    SELECT 
-        *,
+    SELECT *,
         LAG(total_revenue) OVER (PARTITION BY time_segment ORDER BY month_year) AS prev_revenue,
         ROUND(((total_revenue - LAG(total_revenue) OVER (PARTITION BY time_segment ORDER BY month_year)) / 
         LAG(total_revenue) OVER (PARTITION BY time_segment ORDER BY month_year)) * 100, 2) AS percentage_change
